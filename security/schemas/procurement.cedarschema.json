@@ -1,0 +1,119 @@
+{
+  "Procurement": {
+    "entityTypes": {
+      "Agent": {
+        "shape": {
+          "type": "Record",
+          "attributes": {
+            "agent_id": { "type": "String" },
+            "role": { "type": "String" }
+          }
+        }
+      },
+      "User": {
+        "shape": {
+          "type": "Record",
+          "attributes": {
+            "user_id": { "type": "String" },
+            "role": { "type": "String" }
+          }
+        }
+      },
+      "System": {
+        "shape": { "type": "Record", "attributes": {} }
+      }
+    },
+    "actions": {
+      "read_email": {
+        "appliesTo": {
+          "principalTypes": ["Agent", "User"],
+          "resourceTypes": ["System"],
+          "context": {
+            "type": "Record",
+            "attributes": {
+              "email_id": { "type": "String" }
+            }
+          }
+        }
+      },
+      "read_invoice": {
+        "appliesTo": {
+          "principalTypes": ["Agent", "User"],
+          "resourceTypes": ["System"],
+          "context": {
+            "type": "Record",
+            "attributes": {
+              "invoice_id": { "type": "String" }
+            }
+          }
+        }
+      },
+      "prepare_payment": {
+        "appliesTo": {
+          "principalTypes": ["Agent", "User"],
+          "resourceTypes": ["System"],
+          "context": {
+            "type": "Record",
+            "attributes": {
+              "vendor_id": { "type": "String" },
+              "account": { "type": "String" },
+              "amount": { "type": "Long" },
+              "account_trust_level": { "type": "String" },
+              "is_tainted": { "type": "Boolean" },
+              "has_valid_approval": { "type": "Boolean" },
+              "approval_valid": { "type": "Boolean" }
+            }
+          }
+        }
+      },
+      "submit_payment": {
+        "appliesTo": {
+          "principalTypes": ["Agent", "User"],
+          "resourceTypes": ["System"],
+          "context": {
+            "type": "Record",
+            "attributes": {
+              "payment_id": { "type": "String" },
+              "approval_id": { "type": "String" },
+              "amount": { "type": "Long" },
+              "is_prepared": { "type": "Boolean" },
+              "has_valid_approval": { "type": "Boolean" },
+              "approval_valid": { "type": "Boolean" },
+              "account_trust_level": { "type": "String" },
+              "is_tainted": { "type": "Boolean" }
+            }
+          }
+        }
+      },
+      "send_email": {
+        "appliesTo": {
+          "principalTypes": ["Agent", "User"],
+          "resourceTypes": ["System"],
+          "context": {
+            "type": "Record",
+            "attributes": {
+              "to": { "type": "String" },
+              "has_confidential_content": { "type": "Boolean" },
+              "is_external_recipient": { "type": "Boolean" },
+              "recipient_trust_level": { "type": "String" }
+            }
+          }
+        }
+      },
+      "delete_document": {
+        "appliesTo": {
+          "principalTypes": ["Agent", "User"],
+          "resourceTypes": ["System"],
+          "context": {
+            "type": "Record",
+            "attributes": {
+              "doc_path": { "type": "String" },
+              "is_protected_doc": { "type": "Boolean" },
+              "approval_valid": { "type": "Boolean" }
+            }
+          }
+        }
+      }
+    }
+  }
+}
