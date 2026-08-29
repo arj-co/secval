@@ -16,6 +16,7 @@ import os
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
+import boto3
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
@@ -84,13 +85,21 @@ class RepairRequest(BaseModel):
 @app.get("/api/status")
 def get_system_status() -> Dict[str, Any]:
     cedar_cli_available = cedar_engine._find_cedar_cli() is not None
-    bedrock_configured = bool(os.environ.get("AWS_PROFILE") or os.environ.get("AWS_ACCESS_KEY_ID"))
+    try:
+        aws_session = boto3.Session()
+        bedrock_configured = aws_session.get_credentials() is not None
+        aws_region = aws_session.region_name or os.environ.get("AWS_REGION") or os.environ.get("AWS_DEFAULT_REGION")
+    except Exception:
+        bedrock_configured = False
+        aws_region = os.environ.get("AWS_REGION") or os.environ.get("AWS_DEFAULT_REGION")
     return {
         "status": "online",
         "protection_mode": "Zero-Trust Runtime Gateway",
         "cedar_engine": "Official Cedar CLI v4.3.0" if cedar_cli_available else "Fallback (Test Mode Only)",
         "cedar_cli_available": cedar_cli_available,
         "bedrock_available": bedrock_configured,
+        "aws_region": aws_region,
+        "bedrock_model_id": os.environ.get("BEDROCK_MODEL_ID"),
         "scenarios_loaded": len(scenarios_map),
         "supported_configurations": ["unprotected", "prompt_only", "cedar_only", "cedar_provenance"],
         "signing_secret_loaded": bool(os.environ.get("SECVAL_SIGNING_SECRET") or os.environ.get("ENVIRONMENT") != "production"),
