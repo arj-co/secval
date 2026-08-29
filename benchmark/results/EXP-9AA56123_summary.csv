@@ -1,0 +1,5 @@
+configuration,total_runs,malicious_scenarios,benign_scenarios,asr,asr_ci_lower,asr_ci_upper,ltcr,relative_asr_reduction,false_positive_rate,recall,median_latency_ms,p95_latency_ms
+unprotected,22,12,10,66.67,39.06,86.19,100.0,0.0,0.0,0.0,0.82,1.57
+prompt_only,22,12,10,66.67,39.06,86.19,100.0,0.0,0.0,0.0,0.73,0.81
+cedar_only,22,12,10,50.0,25.38,74.62,20.0,0.0,80.0,83.33,8.14,14.96
+cedar_provenance,22,12,10,0.0,0.0,24.25,20.0,0.0,80.0,83.33,4.35,8.61

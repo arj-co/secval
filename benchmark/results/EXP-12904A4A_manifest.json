@@ -1,0 +1,145 @@
+{
+  "experiment_id": "EXP-12904A4A",
+  "timestamp": 1787994158.2212212,
+  "git_commit": "877db4c",
+  "model_id": "deterministic-procurement-agent-v1",
+  "provider": "Deterministic Local Simulator",
+  "execution_type": "deterministic_simulation",
+  "total_runs": 88,
+  "repetitions": 2,
+  "scenarios_count": 11,
+  "configurations": [
+    "unprotected",
+    "prompt_only",
+    "cedar_only",
+    "cedar_provenance"
+  ],
+  "metrics": {
+    "configurations": {
+      "unprotected": {
+        "configuration": "unprotected",
+        "total_runs": 22,
+        "malicious_scenarios": 12,
+        "benign_scenarios": 10,
+        "unauthorized_attempts": 10,
+        "unauthorized_completions": 8,
+        "blocked_malicious_actions": 0,
+        "blocked_legitimate_actions": 0,
+        "completed_legitimate_tasks": 10,
+        "asr": 66.67,
+        "asr_ci": [
+          39.06,
+          86.19
+        ],
+        "ltcr": 100.0,
+        "ltcr_ci": [
+          72.25,
+          100.0
+        ],
+        "precision": 100.0,
+        "recall": 0.0,
+        "false_positive_rate": 0.0,
+        "median_latency_ms": 0.27,
+        "p95_latency_ms": 1.07,
+        "category_asr": {
+          "other": 0.0
+        }
+      },
+      "prompt_only": {
+        "configuration": "prompt_only",
+        "total_runs": 22,
+        "malicious_scenarios": 12,
+        "benign_scenarios": 10,
+        "unauthorized_attempts": 10,
+        "unauthorized_completions": 8,
+        "blocked_malicious_actions": 0,
+        "blocked_legitimate_actions": 0,
+        "completed_legitimate_tasks": 10,
+        "asr": 66.67,
+        "asr_ci": [
+          39.06,
+          86.19
+        ],
+        "ltcr": 100.0,
+        "ltcr_ci": [
+          72.25,
+          100.0
+        ],
+        "precision": 100.0,
+        "recall": 0.0,
+        "false_positive_rate": 0.0,
+        "median_latency_ms": 0.21,
+        "p95_latency_ms": 0.73,
+        "category_asr": {
+          "other": 0.0
+        }
+      },
+      "cedar_only": {
+        "configuration": "cedar_only",
+        "total_runs": 22,
+        "malicious_scenarios": 12,
+        "benign_scenarios": 10,
+        "unauthorized_attempts": 10,
+        "unauthorized_completions": 6,
+        "blocked_malicious_actions": 4,
+        "blocked_legitimate_actions": 2,
+        "completed_legitimate_tasks": 10,
+        "asr": 50.0,
+        "asr_ci": [
+          25.38,
+          74.62
+        ],
+        "ltcr": 100.0,
+        "ltcr_ci": [
+          72.25,
+          100.0
+        ],
+        "precision": 66.67,
+        "recall": 33.33,
+        "false_positive_rate": 20.0,
+        "median_latency_ms": 4.27,
+        "p95_latency_ms": 8.35,
+        "category_asr": {
+          "other": 0.0
+        }
+      },
+      "cedar_provenance": {
+        "configuration": "cedar_provenance",
+        "total_runs": 22,
+        "malicious_scenarios": 12,
+        "benign_scenarios": 10,
+        "unauthorized_attempts": 10,
+        "unauthorized_completions": 0,
+        "blocked_malicious_actions": 10,
+        "blocked_legitimate_actions": 2,
+        "completed_legitimate_tasks": 10,
+        "asr": 0.0,
+        "asr_ci": [
+          0.0,
+          24.25
+        ],
+        "ltcr": 100.0,
+        "ltcr_ci": [
+          72.25,
+          100.0
+        ],
+        "precision": 83.33,
+        "recall": 83.33,
+        "false_positive_rate": 20.0,
+        "median_latency_ms": 4.2,
+        "p95_latency_ms": 8.02,
+        "category_asr": {
+          "other": 0.0
+        }
+      }
+    },
+    "relative_asr_reduction_pct": {
+      "unprotected": 0.0,
+      "prompt_only": 0.0,
+      "cedar_only": 25.0,
+      "cedar_provenance": 100.0
+    },
+    "baseline_configuration": "unprotected",
+    "total_runs": 88
+  }
+}
